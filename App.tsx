@@ -1,118 +1,109 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+// import React, { useRef } from 'react';
+// import { Animated, FlatList, Text, View, Image, StyleSheet } from 'react-native';
 
+// const HEADER_HEIGHT = 200;
+// const SCROLL_THRESHOLD = HEADER_HEIGHT / 2;
+
+// const App = () => {
+//   const scrollY = useRef(new Animated.Value(0)).current;
+
+//   const headerTranslate = scrollY.interpolate({
+//     inputRange: [0, SCROLL_THRESHOLD],
+//     outputRange: [0, -SCROLL_THRESHOLD],
+//     extrapolate: 'clamp',
+//   });
+
+//   const headerScale = scrollY.interpolate({
+//     inputRange: [0, SCROLL_THRESHOLD],
+//     outputRange: [1, 0.7],
+//     extrapolate: 'clamp',
+//   });
+
+//   const headerOpacity = scrollY.interpolate({
+//     inputRange: [0, SCROLL_THRESHOLD],
+//     outputRange: [1, 0.5],
+//     extrapolate: 'clamp',
+//   });
+
+//   const renderItem = ({ item }) => (
+//     <View style={styles.item}>
+//       <Text>{item}</Text>
+//     </View>
+//   );
+
+//   return (
+//     <View style={styles.container}>
+//       <Animated.View
+//         style={[
+//           styles.header,
+//           {
+//             transform: [{ translateY: headerTranslate }, { scale: headerScale }],
+//             opacity: headerOpacity,
+//           },
+//         ]}
+//       >
+//         <Image
+//           source={{ uri: 'https://via.placeholder.com/100' }}
+//           style={styles.avatar}
+//         />
+//         <Text style={styles.title}>Title</Text>
+//       </Animated.View>
+//       <FlatList
+//         data={Array.from({ length: 30 }, (_, i) => `Item ${i}`)}
+//         renderItem={renderItem}
+//         keyExtractor={(item) => item}
+//         ListHeaderComponent={<Text style={styles.listHeader}>Popular Quizzes</Text>}
+//         onScroll={Animated.event(
+//           [{ nativeEvent: { contentOffset: { y: scrollY } } }],
+//           { useNativeDriver: false }
+//         )}
+//       />
+//     </View>
+//   );
+// };
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//   },
+//   header: {
+//     height: HEADER_HEIGHT,
+//     backgroundColor: 'blue',
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     position: 'absolute',
+//     width: '100%',
+//     top: 0,
+//   },
+//   avatar: {
+//     width: 100,
+//     height: 100,
+//     borderRadius: 50,
+//     marginBottom: 10,
+//   },
+//   title: {
+//     color: 'white',
+//     fontSize: 24,
+//   },
+//   item: {
+//     padding: 20,
+//     borderBottomWidth: 1,
+//     borderBottomColor: '#ccc',
+//   },
+//   listHeader: {
+//     fontSize: 24,
+//     padding: 10,
+//     backgroundColor: 'white',
+//   },
+// });
+
+// export default App;
+// App.js
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import AppNavigator from './src/navigation/AppNavigator';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
+const App = () => {
+  return <AppNavigator />;
+};
 
 export default App;
